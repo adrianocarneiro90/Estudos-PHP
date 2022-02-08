@@ -1,1 +1,13 @@
-<?php echo "olá mundo"?>;
+<?php
+//Testando PHP
+
+echo "olá mundo";
+
+
+
+
+
+
+echo date("d/m/Y");
+
+?>
