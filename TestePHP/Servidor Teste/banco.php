@@ -1,6 +1,6 @@
 <?php
 
-require_once 'funcoes.php'; 
+require_once 'funcoes.php';
 // require para a execução se não encontrar o arquivo 
 // include lança um aviso e continua a execução
 
@@ -35,8 +35,34 @@ $contasCorrente['212.312.312-23'] = depositar(
     300
 );
 
-foreach ($contasCorrente as $cpf => $conta) {
-    exibeMensagem(
-        "$cpf {$conta['titular']} {$conta['saldo']}"
-    );
-}
+unset($contasCorrente['143.242.342-03']); // função para remover(apagar)
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+
+<body>
+    <h1>
+        Contas correntes
+    </h1>
+
+    <dl>
+        <?php foreach ($contasCorrente as $cpf => $conta) { ?>
+            <dt>
+                <h3><?= $conta['titular']; ?> - <?= $cpf ?></h3>
+            </dt>
+            <dd>Saldo: <?= $conta['saldo']; ?></dd>
+        <?php } ?>
+    </dl>
+
+</body>
+
+</html>

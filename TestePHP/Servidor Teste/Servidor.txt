@@ -1,0 +1,6 @@
+Subindo o servidor local.
+
+cmd - na pasta 'Servidor teste' (pasta desejada), 
+e subindo o servidor com os comandos...
+
+php -S localhost:8080

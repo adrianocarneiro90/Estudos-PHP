@@ -2,16 +2,14 @@
 
 function exibeMensagem(String $mensagem)
 { //subrotina executa de forma isolada, nao devolve valor
-    echo $mensagem . PHP_EOL;
+    echo $mensagem . '<br>';
 }
 
 function sacar(array $conta, float $valorAsacar): array
 {
     if ($valorAsacar > $conta['saldo']) {
-        exibeMensagem("Não é possivel sacar esse valor!");
     } else {
         $conta['saldo'] -= $valorAsacar;
-        exibeMensagem("Valor sacado com sucesso!");
     }
     return $conta;
 }
@@ -23,4 +21,16 @@ function depositar(array $conta, float $valorAdepositar): array
         exibeMensagem("Deposito precisar ser positivo!");
     }
     return $conta;
+}
+
+function titularComLetrasMaiuscculas(array &$conta)
+{ // '&' - passar por referencia (não a copia)
+    $conta['titular'] = mb_strtoupper($conta['titular']);
+    echo $conta['titular'] . PHP_EOL;
+}
+
+function exibeConta(array $conta)
+{
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    echo "<li>Titular: $titular . Saldo: $saldo</li>";
 }
