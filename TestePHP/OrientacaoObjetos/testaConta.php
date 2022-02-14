@@ -6,6 +6,7 @@ $primeiraConta = new Conta();
 // $variavel é uma REFERENCIA ao ENDEREÇO da conta que foi estanciado
 // $variavel não guarda o valor da conta,ela aponta '->' para a referencia criada
 // new Conta() cria um objeto e devolve a referencia (endereço) dele através da $variavel
+// funcionou no ubunto?
 var_dump($primeiraConta);
 
 $primeiraConta -> saldo = 200;
