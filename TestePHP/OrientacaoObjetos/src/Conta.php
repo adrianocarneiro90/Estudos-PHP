@@ -4,8 +4,9 @@ class Conta
 {
     public $cpf; // a partir do 7.4     public String $cpf;
     public $nome;
-    public $saldo;
-}    public $saldo = 0;
+    public $saldo = 0;
+
+    public function sacar(float $valorASacar)
     {
         if ($valorASacar > $this->saldo) {
             echo "Saldo indisponivel";
