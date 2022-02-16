@@ -2,17 +2,26 @@
 
 class Conta
 {
-    private $cpfTitular; // a partir do 7.4     public String $cpf;
-    private $nomeTitular;
+    private $titular;
     private $saldo;
+    //atributos privados dos objetos, necessario criar metodos para alterar as "contas"
 
-    //atributos privados, necessario criar metodos para alterar as "contas"
+    private static $numeroDeContas = 0;
+    // 'statico' - Membros da classe (Conta)
 
-    public function __construct(string $cpfTitular, string $nomeTitular)
-    {
-        $this->cpfTitular = $cpfTitular;
-        $this->nomeTitular = $nomeTitular;
+
+    public function __construct(Titular $titular)
+    { // sempre que criar um novo objeto (new Conta), o construtor sera chamado
+        $this->titular = $titular;
         $this->saldo =  0;
+
+        self::$numeroDeContas++;
+        // self = $this para a classe atual
+    }
+    public function __destruct()
+    { // função ira deletar contas sem referencia (variavel apontando)
+        // metodo unset(varivavel) retira o ponteiro para o objeto
+        self::$numeroDeContas--;
     }
 
     public function saca(float $valorASacar): void
@@ -44,20 +53,16 @@ class Conta
     {
         return $this->saldo;
     }
-    public function setCpfTitular(string $cpf): string
-    {
-        return $this->cpfTitular = $cpf;
-    }
     public function getCpfTitular(): string
     {
-        return $this->cpfTitular;
-    }
-    public function setNomeTitular(string $nome): string
-    {
-        return $this->nomeTitular = $nome;
+        return $this->titular->getCpf();
     }
     public function getNomeTitular(): string
     {
-        return $this->nomeTitular;
+        return $this->titular->getNome();
+    }
+    public static function recuperaNumeroDeContas(): int
+    {
+        return self::$numeroDeContas;
     }
 }
