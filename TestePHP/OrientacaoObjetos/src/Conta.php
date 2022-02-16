@@ -4,9 +4,16 @@ class Conta
 {
     private $cpfTitular; // a partir do 7.4     public String $cpf;
     private $nomeTitular;
-    private $saldo = 0;
+    private $saldo;
 
     //atributos privados, necessario criar metodos para alterar as "contas"
+
+    public function __construct(string $cpfTitular, string $nomeTitular)
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo =  0;
+    }
 
     public function saca(float $valorASacar): void
     {
@@ -24,7 +31,7 @@ class Conta
         }
         $this->saldo += $valorADepositar;
     }
-    public function transferi($valoraTransferir, $contaDestino): void
+    public function transferir($valoraTransferir, $contaDestino): void
     {
         if ($valoraTransferir > $this->saldo) {
             echo "valor indisponivel";
