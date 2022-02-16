@@ -2,11 +2,13 @@
 
 class Conta
 {
-    public $cpf; // a partir do 7.4     public String $cpf;
-    public $nome;
-    public $saldo = 0;
+    private $cpfTitular; // a partir do 7.4     public String $cpf;
+    private $nomeTitular;
+    private $saldo = 0;
 
-    public function sacar(float $valorASacar)
+    //atributos privados, necessario criar metodos para alterar as "contas"
+
+    public function saca(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
             echo "Saldo indisponivel";
@@ -14,7 +16,7 @@ class Conta
         }
         $this->saldo -= $valorASacar;
     }
-    public function depositar(float $valorADepositar)
+    public function deposita(float $valorADepositar): void
     {
         if ($valorADepositar < 0) {
             echo "valor presisa ser positivo";
@@ -22,7 +24,7 @@ class Conta
         }
         $this->saldo += $valorADepositar;
     }
-    public function transferir($valoraTransferir, $contaDestino)
+    public function transferi($valoraTransferir, $contaDestino): void
     {
         if ($valoraTransferir > $this->saldo) {
             echo "valor indisponivel";
@@ -30,5 +32,25 @@ class Conta
         }
         $this->sacar($valoraTransferir);
         $contaDestino->depositar($valoraTransferir);
+    }
+    public function getSaldo(): float
+    {
+        return $this->saldo;
+    }
+    public function setCpfTitular(string $cpf): string
+    {
+        return $this->cpfTitular = $cpf;
+    }
+    public function getCpfTitular(): string
+    {
+        return $this->cpfTitular;
+    }
+    public function setNomeTitular(string $nome): string
+    {
+        return $this->nomeTitular = $nome;
+    }
+    public function getNomeTitular(): string
+    {
+        return $this->nomeTitular;
     }
 }
